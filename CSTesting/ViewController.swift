@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import CoreSpotlight
+import MobileCoreServices
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
+
+        
+        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeImage as String)
+        attributeSet.title = "First Test"
+        attributeSet.contentDescription = "Open me first!"
+        let item = CSSearchableItem(uniqueIdentifier: "1", domainIdentifier: "test1", attributeSet: attributeSet)
+        CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([item], completionHandler: nil)
+        
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
